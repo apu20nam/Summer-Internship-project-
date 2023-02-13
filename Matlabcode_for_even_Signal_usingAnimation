@@ -1,0 +1,27 @@
+clc; close all;
+
+t = -3:0.1:3;
+x=@(t) exp(-t).*(t>0)+ 0.5*(t==0);
+xe=( x(t)+x(-t))/2;
+x0=(x(t)-x(-t))/2; 
+%% mid = (t(0) + t(length(t) - 1))/2
+
+%% t1 = t(0):
+for k = 1:length(t)
+    
+    %% marker plots
+    plot(t(k),xe(k),'LineWidth',3)
+     %% line plots
+   plot(t(1:k),xe(1:k),'O','MarkerFaceColor','red','LineWidth',3)
+   %% graph properties
+    axis([-3 3 0 1])
+    grid on
+    xlabel('t')
+    ylabel('Amplitude')
+    title('xe(t)')
+    pause(0.00001)
+    
+    if k ~= length(t)
+        clf
+    end
+end
